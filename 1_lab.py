@@ -1,4 +1,4 @@
-mixed_list = [3, .42345, 'eras', (3+5j), '173', 65535, -391.3237162346, None]
+mixed_list = [3, .42345, 'eras', (3+5j), '173', 65535, -391.3237162346, None, 2021]
 
 filtered_list = [x for x in mixed_list if x!=None]
 
