@@ -10,3 +10,13 @@ filt_dict = {key: value for key, value in dict_list.items() if len(key)>3 or val
 
 print(filt_dict)
 print(filtered_list)
+
+def fibbon(x):
+    a, b = 0, 1
+    for i in range(x):
+        yield a
+        a, b = b, a+b
+
+b = int(input('Is this a fibbonacci number? b= '))
+
+print('Sure!' if b in fibbon(1000) else 'No way!')
