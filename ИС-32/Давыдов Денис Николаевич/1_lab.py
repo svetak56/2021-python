@@ -1,7 +1,6 @@
-mixed_list = [3, .42345, 'eras', (3+5j), '173', 65535, -391.3237162346, None]
-filtered_list = [x for x in mixed_list if x != None]
-tuple_list = (3, 1, .32, 'ryry', -3221.3221, None, None)
-dict_list = {'int': 16768, 'float': -1.3273, 'str': 'foo_cad', 'complex': (5 + 1.3j), 'ept': None}
-filt_dict = {key: value for key, value in dict_list.items() if len(key)>3 or value != None}
-print(filt_dict)
-print(filtered_list)
+def f(n):
+    if n == 0:
+        return 1
+    return f(n-1) * n
+
+d = {'D': f(4), 'A': f(1), 'V': f(22), 'Y': f(25), 'O': f(15)}
