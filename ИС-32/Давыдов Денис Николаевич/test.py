@@ -9,12 +9,12 @@ def f(n):
 dict = {'D': f(4), 'A': f(1), 'V': f(22), 'Y': f(25), 'O': f(15)}
 print(dict)
 #Первое задание
-sorted_dict = sorted(dict.items())
+sorted_by_key_dict = sorted(dict.items())
 
-print(sorted_dict)
+print(sorted_by_key_dict)
 
 file_to_save = open('Second.txt', 'w+')
-file_to_save.write(str(sorted_dict))
+file_to_save.write(str(sorted_by_key_dict))
 file_to_save.close()
 #Второе задание
 
