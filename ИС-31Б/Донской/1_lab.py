@@ -1,53 +1,12 @@
-def fact(a):
-  if a == 0:
-    return 1 
-  return fact(a-1) * a
+mixed_list = [3, .42345, 'eras', (3+5j), '173', 65535, -391.3237162346, None]
 
-dct = {'Д': 5, 'О': 16, 'Н': 15, 'С': 19, 'К': 12, 'О':16, 'Й': 11, }
-for i in dct:
-  dct[i] = fact(dct [i])
-sor_d =  sorted(dct.values())
+filtered_list = [x for x in mixed_list if x!=None]
 
-# 2
+tuple_list = (3, 1, .32, 'ryry', -3221.3321, None, None)
 
-sorted_dct = {} 
-print(dct)
-for i in sor_d:
-  for j in dct.keys():
-    if dct[j]==i:
-      sorted_dct[j]= dct[j]
-      break
+dict_list = {'int': 16768, 'float': -1.3273, 'str': 'foo_cad', 'complex': (5+1.3j), 'ept': None}
 
-# 3
+filt_dict = {key: value for key, value in dict_list.items() if len(key)>3 or value!=None}
 
-dict1 = {}  
-sort_dict1 = sorted(dct, key=dct.get)
-for i in sort_dict1:
-  dict1[i]= dct[i]
-
-# 4
-
-import math
-
-d={'Д': 'math.log(5)','О': 'math.log(16)','Н': 'math.log(15)','С':'math.log(19)','К':'math.log(12)','О':'math.log(16)','Й':'math.log(11)'}
-
-valuesList=list(d.values())
-
-generator=[x for x in valuesList if x!='math.log(14)']
-
-print(*[x for x in valuesList if x!='math.log(14)'])
-
-# 5 
-
-lst = []
-for i in dct:
-  lst.append(dct[i])
-sr = sum(lst) // len(lst)
-
-lst1 = [] 
-lst2 = [] 
-for i in lst:
-  if i < sr: 
-    lst1.append(i)
-  elif i>= sr:
-    lst2.append(i)
+print(filt_dict)
+print(filtered_list)
