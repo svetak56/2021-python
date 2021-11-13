@@ -29,6 +29,6 @@ b = int(input('Is this a fibbonacci number? b= '))
 
 print('Sure!' if b in fibbon(1000) else 'No way!')
 
-file_to_save = open('Morozov_1a.txt')
+file_to_save = open('Morozov_1a.txt', 'w+')
 file_to_save.write('Hello, World!')
 file_to_save.close()
