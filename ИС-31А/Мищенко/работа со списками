@@ -1,0 +1,37 @@
+import math
+#1 e^x
+dct = {'М': 14, 'И': 10, 'Щ': 27, 'Е': 6, 'Н': 15, 'К':12, 'О':16}
+for i in dct:
+  dct[i] = math.exp(dct[i])
+print(dct)
+
+sorted_dct =  sorted(dct.values()) 
+dct_al = {} #  в алфавитном порядке №2
+for i in sorted_dct: 
+  for j in dct.keys(): 
+    if dct[j]==i: #сравниваем значения и записываем в новый словарь
+      dct_al[j]= dct[j]
+      break
+  print(dct_al)
+
+#от меньшего к большему №3
+
+dict1 = {} 
+sort_dict1 = sorted(dct, key=dct.get)#сортирует и возращают значения
+for i in sort_dict1:
+  dict1[i]= dct[i]#записывает отсортированные значения
+
+
+# №5
+list = [] #создаем список и записываем туда все значения
+for i in dct:
+  list.append(dct[i])
+sr = sum(list) // len(list) #среднее арифметическое
+
+list1 = [] # список для < среднего
+list2 = [] #список для >= среднего
+for i in list: # перебираем значения и записываем их в соответствующий список
+  if i < sr: 
+    list1.append(i)
+  elif i>= sr:
+    list2.append(i)
