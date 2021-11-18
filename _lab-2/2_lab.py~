@@ -10,6 +10,8 @@ maze = ('######## #',
         '####### ##', 
         '####### ##')
 
+max_x, max_y = len(maze[0]), len(maze)
+
 POSSIBLE_WAYS = ('N', 'S', 'W', 'E')
 
 def is_coord_in_maze(maze, coord):
@@ -55,6 +57,7 @@ def cut_way_back(maze, coord):
     new_maze = list(maze)
     # how to do thing like this:
     # to cancel the way back
+    # 'cause strings in python are unmutable
     new_maze[coord[0]][coord[1]] = '#'
     return new_maze
 

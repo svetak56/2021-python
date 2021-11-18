@@ -10,6 +10,8 @@ maze = ('######## #',
         '####### ##', 
         '####### ##')
 
+max_x, max_y = len(maze[0]), len(maze)
+
 POSSIBLE_WAYS = ('N', 'S', 'W', 'E')
 
 def is_coord_in_maze(maze, coord):
