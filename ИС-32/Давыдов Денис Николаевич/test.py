@@ -1,28 +1,18 @@
-import operator
-
-
 def f(n):
     if n == 0:
         return 1
-    return f(n-1) * n
+    return f(n - 1) * n
 
-dict = {'D': f(4), 'A': f(1), 'V': f(22), 'Y': f(25), 'O': f(15)}
-print(dict)
-#Первое задание
-sorted_by_key_dict = sorted(dict.items())
 
-print(sorted_by_key_dict)
+dict = {'D': 4, 'A': 1, 'V': 22, 'Y': 25, 'O': 15}
 
-file_to_save = open('Second.txt', 'w+')
-file_to_save.write(str(sorted_by_key_dict))
-file_to_save.close()
-#Второе задание
+g = dict.values()
 
-sorted_by_value_dict = sorted(dict.items(), key=operator.itemgetter(1), reverse=True)
+sred = (sum(g) / len(g))
 
-print(sorted_by_value_dict)
+dict_for_5_1 = [i for i in g if i < sred]
+dict_for_5_2 = [i for i in g if i > sred]
 
-file_to_save = open('Third.txt', 'w+')
-file_to_save.write(str(sorted_by_value_dict))
-file_to_save.close()
-#Третье задание
+print(dict_for_5_1)
+print(dict_for_5_2)
+
