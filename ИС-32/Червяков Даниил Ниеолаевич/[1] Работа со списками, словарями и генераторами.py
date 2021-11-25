@@ -11,21 +11,16 @@ def fun(x):
     #return z
     return fun(x-1) * x
 
-#5?
+#4?
 def gen(x):
-    if (x == 0):
-        return 1
-    yield gen(x-1) * x
-    yield math.exp(x)
-    yield x**3
-    f1 = 0
-    f2 = 1
-    z = 0
-    for i in x:
-        z = f1 + f2
-        f1 = f2
-        f2 = z
-    yield z
+    if x is 0:
+        yield 1
+    else:
+        y = 1
+        for i in range(x) + 1:
+            y = y * i
+            yield y * (i-1)
+        
 
 #1
 list1 = {'Ч':25, 'Е':6, 'Р':18, 'В':3, 'Я':33, 'К':12, 'О':16, 'В':3}
