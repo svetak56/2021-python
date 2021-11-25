@@ -33,6 +33,18 @@ dict_for_gen = {'D': 4, 'A': 1, 'V': 22, 'Y': 25, 'O': 15}
 fun_gen = {key: f(int(value)) for key, value in dict_for_gen.items()}
 
 print(fun_gen)
+######################
+def fun_gen(x):
+    y = 1
+    for i in range(x):
+        if i in (0,1):
+            yield 1
+        else:
+            y = y*i
+            yield y
+for i in fun_gen(10):
+    print(i)
+
 #Четвёртое задание
 
 dict_for_5 = {'D': 4, 'A': 1, 'V': 22, 'Y': 25, 'O': 15}
