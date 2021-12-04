@@ -110,7 +110,7 @@ start_point = [0, 8]
 print(len(path_to_exit))
 x = int(input(f'Where is threasure? (x is between 0 and {max_x-1}) '))
 y = int(input(f'Where is threasure? (y is between 0 and {max_y-1}) '))
-treasure_is_here = (abs(x) if abs(x) < max_x-1 else max_x-1, y)
+treasure_is_here = (abs(x) if abs(x) < max_x-1 else max_x-1, abs(y) if abs(y) < max_y-1 else max_y-1)
 
 print(type(treasure_is_here))
 print(treasure_is_here)

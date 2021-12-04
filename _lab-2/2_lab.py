@@ -15,9 +15,9 @@ max_x, max_y = len(maze[0]), len(maze)
 POSSIBLE_WAYS = ('N', 'S', 'W', 'E')
 
 def is_coord_in_maze(maze, coord):
-    if coord[0]<0 or coord[0]>len(maze)-1:
+    if coord[0]<0 or coord[0]>len(maze[0])-1:
         return False
-    if coord[1]<0 or coord[1]>len(maze[0])-1:
+    if coord[1]<0 or coord[1]>len(maze)-1:
         return False
     return True
 
