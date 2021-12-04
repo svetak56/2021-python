@@ -13,9 +13,10 @@ POSSIBLE_WAYS = ('N', 'S', 'W', 'E')
 treja_is_found = False
 
 def is_coord_in_maze(maze, coord):
-    if coord[0]<0 or coord[0]>len(maze)-1:
+    len_y, len_x = len(maze), len(maze[0])
+    if coord[0]<0 or coord[0]>len_x :
         return False
-    if coord[1]<0 or coord[1]>len(maze[0])-1:
+    if coord[1]<0 or coord[1]>len_y:
         return False
     return True
 
@@ -78,33 +79,51 @@ def cut_way_back(direction):
         return ("N","S","W")
 
 
-def bfs(maze,coord):
+def bfs(maze,coord,t):
     n, m = len(maze), len(maze[0])
-    INF = 10**9
+    INF =  0
     p = [[None]*m for _ in range(n)]
-    d = [[INF]*m for _ in range(n)]
-    used = [[False]*m for _ in range(n)]
+    d = [[INF]*m for _ in range(n)] # массив расстояний
+    used = [[False]*m for _ in range(n)] # проверка
     queue = deque() # очередь
     delta = [(0,-1),(0,1),(1,0),(-1,0)]
-    d[coord[0]][coord[1]] = 0
-    used[coord[0]][coord[1]] = True
+    
+    d[coord[0]][coord[1]] = 0 # 1 расстояние до 1 клетки
+    
+    used[coord[0]][coord[1]] = True 
     queue.append(coord)
-    while len(queue)!= 0:
-        x,y = queue.popleft()
-        
-        for dx,dy in delta:
-            nx,ny = x + dx, y + dy
-            if 0 <nx <n and 0 <ny < m and not used[nx][ny] and maze[nx][ny] != "#":
-                print("все ок")
-                d[nx][ny] = d[x][y] + 1
+    while len(queue)!= 0: # пока есть че вынимать
+        x,y = queue.popleft() # координаты клетки которые мы вынимаем из очереди
+        for dx,dy in delta: # перебираем всех соседов клетки
+            nx,ny = x + dx, y + dy # новые координаты соседа
+
+            if 0 <= nx <n and 0 <= ny < m and not used[nx][ny] and maze[nx][ny] != "#": # проверка на корректных координат, эту клетку мы не рассматривали, в данной клетке нет препядствия
+                
+                d[nx][ny] = d[x][y] + 1 #
                 p[nx][ny] = (x,y)
-                used[nx][ny] = True
-                queue.append((nx,ny))
-    print(d[coord[0]][coord[1]])
+                used[nx][ny] = True # что бы мы больше не добавляли эту клетку когда прверяем соседа
+                queue.append((nx,ny)) # добавляем в очередь клетку
+    print(d[t[0]][t[1]])
+    cur = t
+    path = []
+    while cur is not None:
+        path.append(cur)
+        cur = p[cur[0]][cur[1]]
+    path.reverse()
+    count = 0
+    
+    for i in path:
+        ys = path[count][1]
+        xs = path[count][0]
+        b = split(maze[xs])
+        b[ys] = ","
+        maze[xs] = ''.join(b)
+        count+=1
+
 def find_a_way(maze, coord,possible_ways):
     
     len_y, len_x = len(maze), len(maze[0])
-    global path_to_exit, current_path , treja_is_found , visited , queue
+    global path_to_exit, current_path , treja_is_found 
     #print('x: ', len_x, ' y:', len_y)
     #print('Start from: ', coord)
 
@@ -121,13 +140,16 @@ def find_a_way(maze, coord,possible_ways):
             treja_is_found = True
             
             # помечаем пройденный путь точками до трежи
+            
             b = split(maze[coord[0]])
             b[coord[1]] = "."
             maze[coord[0]] = ''.join(b)
-            bfs(maze,treja_is_here)
+            
+            return  
+            
         else:
             if is_path_clean(maze, step(coord, direction)) :
-                print(direction)
+
                 current_path.append(direction)
                 find_a_way(maze, step(coord, direction),cut_way_back(direction))
                 current_path.pop()
@@ -136,9 +158,6 @@ def find_a_way(maze, coord,possible_ways):
                     b = split(maze[coord[0]])
                     b[coord[1]] = "."
                     maze[coord[0]] = ''.join(b)
-
-                    
-                    
     return 
 
 path_to_exit = []
@@ -148,23 +167,26 @@ for i in range(len(maze)*len(maze[0])):
 current_path = []
 
 start_point = [0, 1]
-
-visited = []
-
-
-
 x = int(input("коорд х трежи: "))
 y = int(input("коорд y трежи: "))
+
+
+
+coord_point = [y,x]
+
+t_coord = [118,141]
+
+treja_is_here = (y,x)
+
+find_a_way(maze, start_point,POSSIBLE_WAYS)
+
+bfs(maze,coord_point,t_coord)
 
 # Помечаем сокровище *
 b = split(maze[y])
 b[x] = "*"
 maze[y] = ''.join(b)
 
-
-
-treja_is_here = (y,x)
-
-find_a_way(maze, start_point,POSSIBLE_WAYS)
-
-print(path_to_exit)
+with open("maze-for-me-done.txt", "w") as txt_file:
+    for line in maze:
+        txt_file.write(" ".join(line) + "\n")
