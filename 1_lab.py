@@ -1,12 +1,32 @@
-mixed_list = [3, .42345, 'eras', (3+5j), '173', 65535, -391.3237162346, None]
+#задание 1
+key=['д','о','в','ы','д','е','н','к','о']
+number=[5,16,3,29,5,6,15,12,16]
+value=[]
+for x in number:
+    value.append(x**3)
+a={k:v for k, v in zip(key,value)}
 
-filtered_list = [x for x in mixed_list if x!=None]
+#задание 2
+keysort_a={k: a[k] for k in sorted(a)} 
+with open('алфавитный порядок_задание2.txt', 'w') as file1:
+  for key, value in keysort_a.items():
+    file1.write(f'{key}, {value}\n')
 
-tuple_list = (3, 1, .32, 'ryry', -3221.3321, None, None)
+#задание 3
+valuesort_a={value: a[value] for value in sorted(a)}
+valuesort_a={value: key for key, value in valuesort_a.items()} 
+with open('от меньшего к большему_задание3.txt', 'w') as file2:
+  for key, value in valuesort_a.items():
+    file2.write(f'{key}, {value}\n')
 
-dict_list = {'int': 16768, 'float': -1.3273, 'str': 'foo_cad', 'complex': (5+1.3j), 'ept': None}
-
-filt_dict = {key: value for key, value in dict_list.items() if len(key)>3 or value!=None}
-
-print(filt_dict)
-print(filtered_list)
+#задание 5
+big={} #для среднего и выше
+small={} #для ниже среднего
+middle=sum(value for value in a.values())/9 #среднее знаение
+for key,value in a.items():
+    if value< middle:
+        small[key] = value
+    else:
+        big[key]=value
+print('больше среднего значения',big)
+print('меньше среднего значения',small)
