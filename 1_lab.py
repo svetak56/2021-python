@@ -30,3 +30,4 @@ for key,value in a.items():
         big[key]=value
 print('больше среднего значения',big)
 print('меньше среднего значения',small)
+
