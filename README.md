@@ -9,6 +9,8 @@
 
 Таблица, где я буду отмечать сданные работы: https://docs.google.com/spreadsheets/d/1QCHpZehe26M6ybqkQNUqSTkRFvf2qCnnfMgNk9N4L4M/edit?usp=sharing
 
+Доска с моими каракулями по алгоритмам: https://miro.com/app/board/o9J_lrvHqrI=/?invite_link_id=823446043784
+
 Хорошая книга по python, очень простым языком и на понятных примерах: https://wombat.org.ua/AByteOfPython/AByteofPythonRussian-2.02.pdf
 
 Сервер в Дискорд, где буду дублировать: https://discord.gg/MzPkCYf4Dh
