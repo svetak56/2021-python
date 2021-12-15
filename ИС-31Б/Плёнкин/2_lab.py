@@ -89,18 +89,12 @@ def find_a_way(maze, coord):
         path_to_exit = current_path.copy()
         return
 
-# Отключил эту часть кода. При прохождении в одном направлении более чем на 2 шага, код писал, что путь слишком длинный,
-# после чего выполнение кода просто прекращалось
-#    if len(current_path) > len(path_to_exit): 
-#        print('too large path')
-#        return
-
     for direction in POSSIBLE_WAYS:
         if is_path_clean(maze, step(coord, direction)):
-               #print(direction)
-               current_path.append(direction)
-               find_a_way(cut_way_back(maze, coord), step(coord, direction))
-               current_path.pop()
+            #print(direction)
+            current_path.append(direction)
+            find_a_way(cut_way_back(maze, coord), step(coord, direction))
+            current_path.pop()
 
     return 
 
