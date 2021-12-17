@@ -190,3 +190,4 @@ maze[y] = ''.join(b)
 with open("maze-for-me-done.txt", "w") as txt_file:
     for line in maze:
         txt_file.write(" ".join(line) + "\n")
+
