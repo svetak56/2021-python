@@ -1,0 +1,62 @@
+import operator
+
+
+def f(n):
+    if n == 0:
+        return 1
+    return f(n-1) * n
+
+dictionary = {'Z': f(26), 'A': f(1), 'K': f(11), 'H': f(8), 'A': f(1), 'R': f(18), 'O': f(15), 'V': f(22), 'A': f(1)}
+print(dictionary)
+#Задание 1
+
+sorted_dictionary = sorted(dictionary.items())
+
+print(sorted_dictionary)
+
+file_to_save = open('f1.txt', 'w+')
+file_to_save.write(str(sorted_dictionary))
+file_to_save.close()
+#Задание 2
+
+sorted_by_value_dictionary = sorted(dictionary.items(), key=operator.itemgetter(1), reverse=True)
+
+print(sorted_by_value_dictionary)
+
+file_to_save = open('f2.txt', 'w+')
+file_to_save.write(str(sorted_by_value_dictionary))
+file_to_save.close()
+#Задание 3
+
+dictionary_for_gen = {'Z': 26, 'A': 1, 'K': 11, 'H': 8, 'A': 1, 'R': 18, 'O': 15, 'V': 22, 'A': 1}
+
+fun_gen = {key: f(int(value)) for key, value in dictionary_for_gen.items()}
+
+print(fun_gen)
+######################
+def fun_gen(x):
+    y = 1
+    for i in range(x):
+        if i in (0,1):
+            yield 1
+        else:
+            y = y*i
+            yield y
+for i in fun_gen(10):
+    print(i)
+
+#Задание 4
+
+dictionary_for_5 = {'Z': 26, 'A': 1, 'K': 11, 'H': 8, 'A': 1, 'R': 18, 'O': 15, 'V': 22, 'A': 1}
+
+g = dictionary_for_5.values()
+
+sred = (sum(g) / len(g)) 
+
+dictionary_for_5_1 = [i for i in g if i < sred]
+dictionary_for_5_2 = [i for i in g if i > sred]
+
+print(dictionary_for_5_1)
+print(dictionary_for_5_2)
+
+#Задание 5
