@@ -1,10 +1,23 @@
 from collections import deque
 
-maze_open = open('maze-for-u.txt',"r")
-maze = []
 
-for line in maze_open:
-    maze.append(line[:-1])
+class Maze:
+    
+    def __init__(self):
+        self.maze = []
+    
+    def read_from_file(self):
+        maze_open = open("maze-for-u.txt","r")
+        for line in maze_open:
+            self.maze.append(line[:-1])
+            
+    def print_maze(self):
+        return self.maze
+
+
+
+
+
 
 
 
@@ -162,8 +175,12 @@ def find_a_way(maze, coord,possible_ways):
                     maze[coord[0]] = ''.join(b)
     return 
 
+maze = Maze()
+maze.read_from_file()
+
+
 path_to_exit = []
-for i in range(len(maze)*len(maze[0])):
+for i in range(len(maze.print_maze())*len(maze.print_maze()[0])):
     path_to_exit.append(' ')
                
 current_path = []
@@ -180,16 +197,16 @@ t_coord = [118,141]
 
 treja_is_here = (y,x)
 
-find_a_way(maze, start_point,POSSIBLE_WAYS)
+find_a_way(maze.print_maze(), start_point,POSSIBLE_WAYS)
 
-bfs(maze,coord_point,t_coord)
+bfs(maze.print_maze(),coord_point,t_coord)
 
 # Помечаем сокровище *
-b = split(maze[y])
+b = split(maze.print_maze()[y])
 b[x] = "*"
-maze[y] = ''.join(b)
+maze.print_maze()[y] = ''.join(b)
 
 with open("maze-for-me-done.txt", "w") as txt_file:
-    for line in maze:
+    for line in maze.print_maze():
         txt_file.write(" ".join(line) + "\n")
 

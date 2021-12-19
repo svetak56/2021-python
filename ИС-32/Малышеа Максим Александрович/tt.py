@@ -1,6 +1,9 @@
-u = [(30,30),(29,330)]
-t= 0
+maze_open = open('maze-for-u.txt',"r")
+maze = []
 
-print(u[0][1])
+for line in maze_open:
+    maze.append(line[:-1])
+
+print(maze)
 
 
