@@ -21,15 +21,15 @@ class Maze:
             self.path_to_exit.append(' ')
 
 
- classPathfinder:
-     defstep(self,coord, direction):
+class Pathfinder:
+    def step(self,coord, direction):
         if direction == 'N':
             return self.step_N(coord)
-         elifdirection == 'S':
+        elif direction == 'S':
             return self.step_S(coord)
-         elifdirection == 'E':
+        elif direction == 'E':
             return self.step_E(coord)
-         elifdirection == 'W':
+        elif direction == 'W':
             return self.step_W(coord)
 
     def step_N(self,coord):
