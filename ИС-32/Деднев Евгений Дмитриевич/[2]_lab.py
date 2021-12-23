@@ -1,6 +1,6 @@
 from collections import deque
 
-maze_open = open('maze-for-u.txt',"r")
+maze_open = open('lab.txt',"r")
 maze = []
 
 for line in maze_open:
