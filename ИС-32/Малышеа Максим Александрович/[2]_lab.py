@@ -6,8 +6,6 @@ maze = []
 for line in maze_open:
     maze.append(line[:-1])
 
-
-
    
 
 
