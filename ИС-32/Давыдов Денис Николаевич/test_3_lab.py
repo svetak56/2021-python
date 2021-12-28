@@ -10,15 +10,19 @@ class Maze():
         """Просто вывод лабиринта"""
         print(self.mazer)
 
-    def read_maze(self):
-        """Считывание из файла и хранение в maze"""
+    """def read_maze(self):
+            Считывание из файла и хранение в maze
         f = open("E:/GitHub/2021-python/ИС-32/Давыдов Денис Николаевич/maze-for-u.txt", "r")
         maze = []
         for line in f:
-            maze.append(line[:-1])
+            maze.append(line[:-1])"""  # Не робит
 
+f = open("E:/GitHub/2021-python/ИС-32/Давыдов Денис Николаевич/maze-for-u.txt", "r")
+maze = []
+for line in f:
+    maze.append(line[:-1])
 
-maze_file = Maze(2)
+maze_file = Maze(maze)
 maze_file.print_maze()
 
 class Pathfinder():
