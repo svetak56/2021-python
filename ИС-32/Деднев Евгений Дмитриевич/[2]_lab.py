@@ -76,46 +76,49 @@ def cut_way_back(direction):
         return ("N","S","W")
 
 
-def bfs(maze,coord,t):
-    n, m = len(maze), len(maze[0])
-    INF =  0
-    p = [[None]*m for _ in range(n)]
-    d = [[INF]*m for _ in range(n)] 
-    used = [[False]*m for _ in range(n)] 
-    queue = deque() 
-    delta = [(0,-1),(0,1),(1,0),(-1,0)]
-    
-    d[coord[0]][coord[1]] = 0 
-    
-    used[coord[0]][coord[1]] = True 
-    queue.append(coord)
-    while len(queue)!= 0: 
-        x,y = queue.popleft() 
-        for dx,dy in delta: 
-            nx,ny = x + dx, y + dy 
+def bfs(maze, coord, t):
+    try:
+        n, m = len(maze), len(maze[0])
+        INF = 0
+        p = [[None]*m for _ in range(n)]
+        d = [[INF]*m for _ in range(n)]
+        used = [[False]*m for _ in range(n)]
+        queue = deque()
+        delta = [(0, -1), (0, 1), (1, 0), (-1, 0)]
 
-            if 0 <= nx <n and 0 <= ny < m and not used[nx][ny] and maze[nx][ny] != "#": 
-                
-                d[nx][ny] = d[x][y] + 1 
-                p[nx][ny] = (x,y)
-                used[nx][ny] = True 
-                queue.append((nx,ny)) 
-    print(d[t[0]][t[1]])
-    cur = t
-    path = []
-    while cur is not None:
-        path.append(cur)
-        cur = p[cur[0]][cur[1]]
-    path.reverse()
-    count = 0
-    
-    for i in path:
-        ys = path[count][1]
-        xs = path[count][0]
-        b = split(maze[xs])
-        b[ys] = ","
-        maze[xs] = ''.join(b)
-        count+=1
+        d[coord[0]][coord[1]] = 0
+
+        used[coord[0]][coord[1]] = True
+        queue.append(coord) 
+        while len(queue) != 0:
+            x, y = queue.popleft()
+            for dx, dy in delta:
+                nx, ny = x + dx, y + dy
+
+                if 0 <= nx < n and 0 <= ny < m and not used[nx][ny] and maze[nx][ny] != "#":
+
+                    d[nx][ny] = d[x][y] + 1
+                    p[nx][ny] = (x, y)
+                    used[nx][ny] = True
+                    queue.append((nx, ny))
+        print(d[t[0]][t[1]])
+        cur = t
+        path = []
+        while cur is not None:
+            path.append(cur)
+            cur = p[cur[0]][cur[1]]
+        path.reverse()
+        count = 0
+
+        for i in path:
+            ys = path[count][1]
+            xs = path[count][0]
+            b = Pathfinder.split(maze[xs])
+            b[ys] = ","
+            maze[xs] = ''.join(b)
+            count += 1
+    except IndexError:
+        pass
 
 def find_a_way(maze, coord,possible_ways):
     
